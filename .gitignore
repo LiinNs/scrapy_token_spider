@@ -1,0 +1,5 @@
+.vscode
+__pycache__
+# Ignore all logfiles and tempfiles.
+log
+tmp
