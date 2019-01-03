@@ -3,3 +3,4 @@ __pycache__
 # Ignore all logfiles and tempfiles.
 log
 tmp
+output
