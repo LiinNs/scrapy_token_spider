@@ -6,6 +6,13 @@ from token_pipeline.items import ImageItem
 class CoinSpider(scrapy.Spider):
     name = 'coin'
 
+    custom_settings = {
+        # 指定使用的 Pipeline
+        'ITEM_PIPELINES': {
+            'token_pipeline.pipelines.TokenFilesPipeline': 1,
+        }
+    }
+
     def start_requests(self):
         urls = [
             'https://info.binance.com/en/currencies/bitcoin'

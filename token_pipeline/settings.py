@@ -79,10 +79,12 @@ DOWNLOAD_DELAY = 2
 
 # Configure item pipelines
 # See https://doc.scrapy.org/en/latest/topics/item-pipeline.html
-ITEM_PIPELINES = {
-   'token_pipeline.pipelines.CoinImagePipeline': 1,
-}
+# ITEM_PIPELINES = {
+#    'token_pipeline.pipelines.CoinImagePipeline': 1,
+# }
 IMAGES_STORE = 'output/images'
+
+FILES_STORE = 'output/files'
 # Enable and configure the AutoThrottle extension (disabled by default)
 # See https://doc.scrapy.org/en/latest/topics/autothrottle.html
 #AUTOTHROTTLE_ENABLED = True

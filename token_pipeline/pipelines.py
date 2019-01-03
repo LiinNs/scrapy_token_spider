@@ -7,6 +7,7 @@
 import scrapy
 # 导入项目设置
 from scrapy.pipelines.images import ImagesPipeline
+from scrapy.pipelines.files import FilesPipeline
 from scrapy.exceptions import DropItem
 from os.path import join, splitext
 import six
@@ -20,6 +21,14 @@ class TokenPipelinePipeline(object):
     def process_item(self, item, spider):
         return item
 
+class TokenFilesPipeline(FilesPipeline):
+    def get_media_requests(self, item, info):
+        yield scrapy.Request(item['url'], meta={'proxy': 'http://127.0.0.1:1087', 'item': item})
+
+    def file_path(self, request, response=None, info=None):
+        item = request.meta['item']
+        filename, file_extension = splitext(item['url'])
+        return item['name'] + file_extension
 
 class CoinImagePipeline(ImagesPipeline):
 
