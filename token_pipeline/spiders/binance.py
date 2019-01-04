@@ -1,17 +1,18 @@
 # -*- coding: utf-8 -*-
 import scrapy
 from token_pipeline.items import ImageItem
+from os.path import splitext
 
 
 class BinanceSpider(scrapy.Spider):
     name = 'binance'
 
-    custom_settings = {
-        # 指定使用的 Pipeline
-        'ITEM_PIPELINES': {
-            'token_pipeline.pipelines.CoinImagePipeline': 1,
-        }
-    }
+    # custom_settings = {
+    #     # 指定使用的 Pipeline
+    #     'ITEM_PIPELINES': {
+    #         'token_pipeline.pipelines.CoinImagePipeline': 1,
+    #     }
+    # }
 
     def start_requests(self):
         urls = [
@@ -28,5 +29,8 @@ class BinanceSpider(scrapy.Spider):
     def parse_image_url(self, response):
         item = ImageItem()
         item['name'] = response.css('div.ix71fe-1.haNgdx > div.left-wapper > div.media-info > div.media-heading >div.instro::text').extract_first()
+        item['sort_name'] = response.css('div.ix71fe-1.haNgdx > div.left-wapper > div.media-info > div.media-heading > h1::text').extract_first()
         item['url'] = response.css('div.ix71fe-1.haNgdx > div.left-wapper > img::attr(src)').extract_first()
+        filename, file_extension = splitext(item['url'])
+        item['image_name'] = item['name'] + file_extension
         yield item

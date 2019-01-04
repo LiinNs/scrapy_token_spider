@@ -15,5 +15,6 @@ class TokenPipelineItem(scrapy.Item):
 
 class ImageItem(scrapy.Item):
     name = scrapy.Field()
+    sort_name = scrapy.Field()
+    image_name = scrapy.Field()
     url = scrapy.Field()
-    image_paths = scrapy.Field()

@@ -9,7 +9,7 @@ import scrapy
 from scrapy.pipelines.images import ImagesPipeline
 from scrapy.pipelines.files import FilesPipeline
 from scrapy.exceptions import DropItem
-from os.path import join, splitext
+from os.path import splitext
 import six
 from PIL import Image
 from scrapy.utils.misc import md5sum
