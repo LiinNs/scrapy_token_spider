@@ -85,6 +85,8 @@ DOWNLOAD_DELAY = 2
 IMAGES_STORE = 'output/images'
 
 FILES_STORE = 'output/files'
+# 设置输出文件编码
+FEED_EXPORT_ENCODING = 'utf-8'
 # Enable and configure the AutoThrottle extension (disabled by default)
 # See https://doc.scrapy.org/en/latest/topics/autothrottle.html
 #AUTOTHROTTLE_ENABLED = True
