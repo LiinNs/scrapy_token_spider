@@ -31,7 +31,7 @@ class FeixiaohaoCoinInfoSpider(scrapy.Spider):
         item['key'] = coin['name']
         item['issue_date'] = coin['online_time']
         item['issue_price'] = coin['icoprice']
-        item['website'] = coin['siteurl'].split("\\")[0]
+        item['website'] = coin['siteurl'].split("\\n")[0]
         item['white_paper'] = coin['white_paper']
         item['source_code'] = coin['codelink']
         item['max_supply'] = coin['maxsupply']
